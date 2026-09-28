@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment (do not commit, it is huge)
+.venv/
+venv/
+env/
+
+# Large or generated data
+# The dataset is downloaded automatically, so do not commit it.
+data/*.csv
+data/_raw_download.csv
+
+# Generated model file
+#
+# NOTE: models/phishguard_model.joblib is deliberately NOT ignored.
+# It is only about 3.2 MB, and including it means anyone who clones this
+# repository can run the app straight away, without re-downloading the
+# 54 MB dataset and retraining from scratch. That makes the project
+# much easier to review, demo and reproduce.
+#
+# The 560 MB .venv/ folder above IS ignored - it is machine-specific
+# and must never be committed.
+
+# Editor / OS files
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

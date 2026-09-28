@@ -1,0 +1,11 @@
+# Normalise line endings so the project behaves the same on Windows, Mac and Linux.
+# Keep .py files as LF, which is the Python standard.
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+
+# The trained model and the graphs are binary - never touch their line endings.
+*.joblib binary
+*.png binary

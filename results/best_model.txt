@@ -1,0 +1,7 @@
+SELECTED MODEL : Random Forest
+Selected using  : F1-score of the PHISHING class
+Accuracy        : 0.9673
+Precision       : 0.9821
+Recall          : 0.9405
+F1-score        : 0.9608
+Model file      : C:\Users\yuvra\OneDrive\Documents\open code\phishguard\models\phishguard_model.joblib

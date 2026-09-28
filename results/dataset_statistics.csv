@@ -1,0 +1,11 @@
+,value
+Total rows after cleaning,235370.0
+Legitimate URLs,134850.0
+Phishing URLs,100520.0
+Legitimate share (%),57.29
+Phishing share (%),42.71
+Number of features,18.0
+Training rows,188296.0
+Test rows,47074.0
+random_state,42.0
+test_size,0.2

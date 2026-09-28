@@ -1,0 +1,22 @@
+# PhishGuard - required packages
+# ==============================
+#
+# Install everything with:
+#     pip install -r requirements.txt
+#
+# The versions below are the EXACT versions this project was built and
+# tested with, so the results in your report can be reproduced exactly.
+#
+# Note on scikit-learn: the version is pinned deliberately. Newer releases
+# (1.7 and above) ship different compiled files that are blocked by the
+# Application Control policy on some Windows machines, which causes
+# "ImportError: DLL load failed while importing _criterion".
+# scikit-learn 1.6.0 works everywhere, so we keep that one.
+
+pandas==3.0.6
+numpy==2.5.3
+scikit-learn==1.6.0
+matplotlib==3.11.2
+seaborn==0.13.2
+streamlit==1.64.0
+joblib==1.6.0

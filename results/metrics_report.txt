@@ -1,0 +1,99 @@
+========================================================================
+PhishGuard - Full Evaluation Report
+All numbers below were calculated from the real dataset.
+Positive class = PHISHING (1)
+========================================================================
+
+DATASET
+------------------------------------------------------------------------
+  Total rows after cleaning    : 235370
+  Legitimate URLs              : 134850
+  Phishing URLs                : 100520
+  Legitimate share (%)         : 57.29
+  Phishing share (%)           : 42.71
+  Number of features           : 18
+  Training rows                : 188296
+  Test rows                    : 47074
+  random_state                 : 42
+  test_size                    : 0.2
+  random_state                 : 42
+
+FEATURES USED (18)
+------------------------------------------------------------------------
+   1. url_length             Total number of characters in the URL
+   2. num_dots               How many '.' (dot) characters appear
+   3. num_hyphens            How many '-' (hyphen) characters appear
+   4. num_underscores        How many '_' (underscore) characters appear
+   5. num_special_chars      Characters that are not letters, digits, dot, hyphen, underscore or slash
+   6. num_digits             How many numbers (0-9) appear
+   7. num_subdirectories     Folder levels in the path, e.g. /a/b/c = 3
+   8. path_length            Number of characters after the domain name
+   9. domain_length          Number of characters in the domain name
+  10. num_query_params       How many ?key=value pairs come after the '?'
+  11. has_https              1 if the URL begins with https://  (1 = good, 0 = suspicious)
+  12. has_ip_address         1 if the site uses a raw IP number instead of a name
+  13. has_at_symbol          1 if the URL contains '@' (used to hide the real site)
+  14. has_punycode           1 if the domain contains 'xn--' (fake lookalike characters)
+  15. num_subdomains         Levels before the main name, e.g. login.paypal.com = 2
+  16. has_suspicious_word    1 if a word like login / verify / secure appears
+  17. is_shortened_url       1 if a known URL shortener (bit.ly, tinyurl...) is used
+  18. risky_tld              1 if the ending is a risky domain extension (.xyz, .zip, .tk...)
+
+MODEL COMPARISON
+------------------------------------------------------------------------
+  Model                   Accuracy  Precision   Recall       F1
+  Logistic Regression       0.9526     0.9772   0.9104   0.9426
+  Decision Tree             0.9667     0.9822   0.9391   0.9602
+  Random Forest             0.9673     0.9821   0.9405   0.9608 <== SELECTED
+
+CONFUSION MATRICES (rows = actual, columns = predicted)
+------------------------------------------------------------------------
+
+  Logistic Regression
+                     Pred Legitimate   Pred Phishing
+    Actual Legitimate            26,543             427
+    Actual Phishing             1,802          18,302
+    True Negatives  (legit allowed)  : 26,543
+    False Positives (false alarm)    : 427
+    False Negatives (phishing missed): 1,802
+    True Positives  (phishing caught): 18,302
+
+  Decision Tree
+                     Pred Legitimate   Pred Phishing
+    Actual Legitimate            26,627             343
+    Actual Phishing             1,224          18,880
+    True Negatives  (legit allowed)  : 26,627
+    False Positives (false alarm)    : 343
+    False Negatives (phishing missed): 1,224
+    True Positives  (phishing caught): 18,880
+
+  Random Forest
+                     Pred Legitimate   Pred Phishing
+    Actual Legitimate            26,625             345
+    Actual Phishing             1,196          18,908
+    True Negatives  (legit allowed)  : 26,625
+    False Positives (false alarm)    : 345
+    False Negatives (phishing missed): 1,196
+    True Positives  (phishing caught): 18,908
+
+
+FEATURE IMPORTANCE (selected model)
+------------------------------------------------------------------------
+  has_https                 0.4353
+  num_digits                0.1911
+  url_length                0.1160
+  path_length               0.0638
+  num_hyphens               0.0458
+  domain_length             0.0381
+  num_subdirectories        0.0344
+  num_subdomains            0.0277
+  num_dots                  0.0225
+  risky_tld                 0.0171
+  has_suspicious_word       0.0049
+  num_special_chars         0.0025
+  num_query_params          0.0008
+  num_underscores           0.0001
+  has_at_symbol             0.0000
+  has_punycode              0.0000
+  is_shortened_url          0.0000
+  has_ip_address            0.0000
